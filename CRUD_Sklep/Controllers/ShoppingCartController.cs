@@ -52,13 +52,14 @@ namespace CRUD_Sklep.Controllers
 
         public IActionResult Edit(int id)
         {
-            List<ShopingCart> itemById = _shopingCart.GetItemById(id).ToList();
-            return View(itemById);
+            var item = _shopingCart.GetAllItems().Where(sc => sc.Id == id).FirstOrDefault();
+            return View(item);
         }
 
         [HttpPost]
-        public IActionResult Edit()
+        public IActionResult Edit(int productId, int amount)
         {
+            _shopingCart.UpdateAmountAfterEdit(productId, amount);
             return RedirectToAction("ListCart");
         }
     }
