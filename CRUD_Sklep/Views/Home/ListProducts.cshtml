@@ -58,8 +58,10 @@
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
-                <form method="Post" asp-action="AddToKoszyk">
-                    <button type="submit"></button>
+
+                <form asp-controller="ShoppingCart" asp-action="AddToKoszyk" method="post">
+                    <input type="number" name="amount" value="1" />
+                    <button type="submit" name="id" value="@item.Id">Dodaj</button>
                 </form>
             </td>
         </tr>

@@ -11,6 +11,7 @@ namespace CRUD_Sklep.Context
 
         //To bedzie dbset i entity sobie ogarnie
         public DbSet<Product> Products { get; set; }
+        public DbSet<ShopingCart> ShopingCarts{ get; set; }
 
     }
 }

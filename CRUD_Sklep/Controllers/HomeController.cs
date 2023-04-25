@@ -43,11 +43,7 @@ namespace CRUD_Sklep.Controllers
             return RedirectToAction("ListProducts");
         }
 
-        [HttpPost]//Dodawanie do koszyka
-        public IActionResult AddToKoszyk(Product product)
-        {
 
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
