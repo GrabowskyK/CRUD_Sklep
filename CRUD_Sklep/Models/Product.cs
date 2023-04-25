@@ -9,6 +9,7 @@
         public int Amount { get; set; }
         public float Price { get; set; }
 
+        public Product() { }
         public Product(string name, string description, string category, int amount, float price)
         {
             Name = name;

@@ -1,6 +1,10 @@
-﻿namespace CRUD_Sklep.Service
+﻿using CRUD_Sklep.Models;
+
+namespace CRUD_Sklep.Service
 {
-    public class IProductService
+    public interface IProductService
     {
+        IEnumerable<Product> GetAllProducts();
+        void AddProduct(Product product);
     }
 }
