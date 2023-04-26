@@ -16,7 +16,7 @@ namespace CRUD_Sklep.Models
             {
                 if (Product.Price != null)
                 {
-                    return Product.Price * Amount;
+                    return (Product.Price * Amount * 100)/100;
                 }
                 return 0;
             }

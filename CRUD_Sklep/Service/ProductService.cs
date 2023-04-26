@@ -21,5 +21,10 @@ namespace CRUD_Sklep.Service
             _databaseContext.SaveChanges();
         }
 
+        public void RemoveProduct(Product product) {
+            var item = _databaseContext.Products.FirstOrDefault(p => p.Id == product.Id);
+            _databaseContext.Remove(item);
+            _databaseContext.SaveChanges();
+        }
     }
 }

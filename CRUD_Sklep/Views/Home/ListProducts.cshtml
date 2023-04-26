@@ -11,6 +11,22 @@
 <p>
     <a asp-action="AddProdcuts">Create New</a>
 </p>
+
+<div id="items">
+    @foreach (var item in Model) {
+    <div class="wine">
+            <img class="item-wine" src="https://www.euro-wino.pl/images/-------------------=przezroczyste%201.png">
+        <div class="info">
+            <p class="type-wine">@item.Name</p>
+                <p class="type-wine">@item.Price</p>
+            <form method="POST">
+                <button type="button">Add to Cart!</button>
+
+            </form>
+        </div>
+    </div>
+    }
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -59,7 +75,7 @@
                     else
                     {
                         y = false;
-                        <p>Out of stock!</p>
+                        <p color="red">Out of stock!</p>
 
                     }
             </td>
@@ -68,18 +84,18 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                    <a asp-action="DeleteProducts" asp-route-id="@item.Id">Delete</a> |
 
                 <form asp-controller="ShoppingCart" asp-action="AddToKoszyk" method="post">
                         @if (y == false)
                         {
                             <input type="number" name="amount" value="1" disabled/>
-                            <button type="submit" name="id" value="@item.Id">Dodaj</button>
+                            
                         }
                         else
                         {
                             <input type="number" name="amount" value="1" />
+                            <button type="submit" name="id" value="@item.Id">Add To Cart</button>
                         }
                             
                 </form>

@@ -6,5 +6,6 @@ namespace CRUD_Sklep.Service
     {
         IEnumerable<Product> GetAllProducts();
         void AddProduct(Product product);
+        void RemoveProduct(Product product);
     }
 }

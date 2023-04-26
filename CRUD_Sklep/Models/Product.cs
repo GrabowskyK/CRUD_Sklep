@@ -1,4 +1,6 @@
-﻿namespace CRUD_Sklep.Models
+﻿using System.Globalization;
+
+namespace CRUD_Sklep.Models
 {
     public class Product
     {
@@ -7,7 +9,8 @@
         public string Description { get; set; }
         public string Category { get; set; }
         public int Amount { get; set; }
-        public float Price { get; set; }
+        public float Price { get; set; } //Tutaj jest problem
+
 
         public Product() { }
         public Product(string name, string description, string category, int amount, float price)

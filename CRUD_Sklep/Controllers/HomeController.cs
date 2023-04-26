@@ -33,17 +33,29 @@ namespace CRUD_Sklep.Controllers
 
         public IActionResult AddProdcuts()
         {
+            
             return View();
         }
 
         [HttpPost]
         public IActionResult AddProdcuts(Product product) 
         {
+            //Problem z price
             _productService.AddProduct(product);
             return RedirectToAction("ListProducts");
         }
 
-
+        public IActionResult DeleteProducts(int id)
+        {
+            var product = _productService.GetAllProducts().Where(p => p.Id == id).FirstOrDefault();
+            return View(product);
+        }
+        [HttpPost]
+        public IActionResult DeleteProducts(Product product)
+        {
+            _productService.RemoveProduct(product);
+            return RedirectToAction("ListProducts");
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
