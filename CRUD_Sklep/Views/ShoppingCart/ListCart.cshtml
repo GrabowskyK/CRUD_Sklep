@@ -44,7 +44,11 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-controller="ShoppingCart" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Delete" asp-controller="ShoppingCart" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Delete2" asp-controller="ShoppingCart" asp-route-id="@item.Id">Delete</a> |
+                    <form method="post" asp-action="Delete" asp-controller="ShoppingCart" asp-for="id">
+                        <button type="submit" name="id" value="@item.Id">Delete</button>
+                    </form>
+               
             </td>
         </tr>
 }

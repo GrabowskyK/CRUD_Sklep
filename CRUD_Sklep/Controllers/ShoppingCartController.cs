@@ -62,5 +62,12 @@ namespace CRUD_Sklep.Controllers
             _shopingCart.UpdateAmountAfterEdit(productId, amount);
             return RedirectToAction("ListCart");
         }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            _shopingCart.Remove(id);
+            return RedirectToAction("ListCart");
+        }
     }
 }

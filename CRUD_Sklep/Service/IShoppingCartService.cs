@@ -11,5 +11,6 @@ namespace CRUD_Sklep.Service
         bool UpdateAmountInProducts(int id, int amount);
         bool UpdateAmountInCart(int id, int amount);
         bool UpdateAmountAfterEdit(int id, int amount);
+        void Remove(int id);
     }
 }

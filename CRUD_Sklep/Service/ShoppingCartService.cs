@@ -88,5 +88,14 @@ namespace CRUD_Sklep.Service
             }
         }
 
+        public void Remove(int id)
+        {
+            var item = _databaseContext.ShopingCarts.FirstOrDefault(sc => sc.Id == id);
+            var amount = item.Amount;
+            var amountProducts = _databaseContext.Products.FirstOrDefault(p => p.Id == item.ProductId);
+            amountProducts.Amount += amount;
+            _databaseContext.Remove(item);
+            _databaseContext.SaveChanges();
+        }
     }
 }
