@@ -6,10 +6,10 @@
 
 <h1>Edit</h1>
 
-<h4>ShopingCart</h4>
 <hr />
-<div class="row">
+<div class="row" style="text-align:center; justify-content:center; display:flex;">
     <div class="col-md-4">
+        <h3>How many you want?</h3>
         <form asp-action="Edit" asp-controller="ShoppingCart">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ProductId" />

@@ -5,29 +5,47 @@
 @{
     ViewData["Title"] = "ListProducts";
 }
-
+@*
 <h1>ListProducts</h1>
 
 <p>
     <a asp-action="AddProdcuts">Create New</a>
 </p>
-
+*@
 <div id="items">
     @foreach (var item in Model) {
+        @if (item.Amount > 0)
+        {
+            y = true;
+        }
+        else
+        {
+            y = false;
+
+        }
     <div class="wine">
             <img class="item-wine" src="https://www.euro-wino.pl/images/-------------------=przezroczyste%201.png">
         <div class="info">
             <p class="type-wine">@item.Name</p>
-                <p class="type-wine">@item.Price</p>
-            <form method="POST">
-                <button type="button">Add to Cart!</button>
+                <p class="type-wine">@item.Price $</p>
+                <p class="type-wine">
+               <form asp-controller="ShoppingCart" asp-action="AddToKoszyk" method="post">
+                        @if (y == false)
+                        {
+                            <p color="red">Out of stock!</p>
 
+                        }
+                        else
+                        {
+                            <input type="number" name="amount" value="1" style="text-align:center; width: 50px;" />
+                            <button type="submit" name="id" value="@item.Id">Add To Cart</button>
+                        }
             </form>
         </div>
     </div>
     }
 </div>
-<table class="table">
+@*<table class="table">
     <thead>
         <tr>
             <th>
@@ -102,5 +120,5 @@
             </td>
         </tr>
 }
-    </tbody>
+    </tbody>*@
 </table>

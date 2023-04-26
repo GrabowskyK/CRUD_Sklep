@@ -9,7 +9,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table" style="color:white;">
     <thead>
         <tr>
             <th>
@@ -28,10 +28,16 @@
         </tr>
     </thead>
     <tbody>
+        @{
+            var iterable = 0;
+        }
 @foreach (var item in Model) {
-        <tr>
+            @if(1 == 1){
+                iterable += 1;
+            }
+            <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Product.Id)
+                    @Html.DisplayFor(modelItem => iterable)
             </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Product.Name)
@@ -43,10 +49,11 @@
                 @Html.DisplayFor(modelItem => item.Sum)
             </td>
             <td>
-                <a asp-action="Edit" asp-controller="ShoppingCart" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Delete2" asp-controller="ShoppingCart" asp-route-id="@item.Id">Delete</a> |
+                    <a asp-action="Edit" asp-route-id="@item.Id" asp-controller="ShoppingCart" asp-for="id">
+                        <button type="submit" name="id" value="@item.Id" class="buttonInListCart">Edit</button>
+                    </a>
                     <form method="post" asp-action="Delete" asp-controller="ShoppingCart" asp-for="id">
-                        <button type="submit" name="id" value="@item.Id">Delete</button>
+                        <button type="submit" name="id" value="@item.Id" class="buttonInListCart">Delete</button>
                     </form>
                
             </td>
