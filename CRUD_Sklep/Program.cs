@@ -9,7 +9,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IShoppingCartService, ShoppingCartService>();
 
-builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer("Server=(localdb)\\mysql;Database=CRUD_Store;Trusted_Connection=True;MultipleActiveResultSets=true"));
+//builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer("Server=tcp:testdatabasemysql.database.windows.net,1433;Initial Catalog=CRUD_database_sklep;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication=\"Active Directory Default\";"));
+builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer("Server = (localdb)\\mysql; Database = CRUD_Store; Trusted_Connection = True; MultipleActiveResultSets = true"));
 
 var app = builder.Build();
 
@@ -26,10 +27,10 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthorization();
+//app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=ListProducts}/{id?}");
 
 app.Run();
