@@ -69,5 +69,11 @@ namespace CRUD_Sklep.Controllers
             _shopingCart.Remove(id);
             return RedirectToAction("ListCart");
         }
+
+        public IActionResult RemoveAll()
+        {
+            _shopingCart.RemoveAll();
+            return RedirectToAction("ListProducts","Home");
+        }
     }
 }

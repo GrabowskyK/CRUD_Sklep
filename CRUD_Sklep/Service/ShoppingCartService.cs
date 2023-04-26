@@ -48,7 +48,7 @@ namespace CRUD_Sklep.Service
             else
             {
                 return false;
- //Tutaj dodać message               
+//TODO: Add message           
             }
 
         }
@@ -65,7 +65,7 @@ namespace CRUD_Sklep.Service
             else
             {
                 return false;
-                //Tutaj dodać message               
+                //TODO: Add message                    
             }
         }
 
@@ -73,7 +73,7 @@ namespace CRUD_Sklep.Service
         {
             var item = _databaseContext.ShopingCarts.FirstOrDefault(sc => sc.ProductId == productId);
             var sub = _databaseContext.Products.FirstOrDefault(p => p.Id == productId);
-            if (amount <= sub.Amount && amount > 0)
+            if ((amount <= sub.Amount + item.Amount) && amount > 0)
             {
                 sub.Amount += item.Amount - amount;
 
@@ -84,7 +84,7 @@ namespace CRUD_Sklep.Service
             else
             {
                 return false;
-                //Tutaj dodać message               
+                //TODO: Add message                   
             }
         }
 
@@ -95,6 +95,19 @@ namespace CRUD_Sklep.Service
             var amountProducts = _databaseContext.Products.FirstOrDefault(p => p.Id == item.ProductId);
             amountProducts.Amount += amount;
             _databaseContext.Remove(item);
+            _databaseContext.SaveChanges();
+        }
+
+        public void RemoveAll()
+        {
+            var items = _databaseContext.ShopingCarts.ToList();
+            foreach (var item in items)
+            {
+                var sub = _databaseContext.Products.FirstOrDefault(p => p.Id == item.ProductId);
+                sub.Amount += item.Amount;
+                _databaseContext.SaveChanges();
+            }
+            _databaseContext.ShopingCarts.RemoveRange(items);
             _databaseContext.SaveChanges();
         }
     }

@@ -265,3 +265,24 @@ input[type=checkbox] {
     padding: 0px;
     margin: 5px;
 }
+
+th, td {
+    padding-right: 75px;
+    white-space: 10px;
+    border-spacing: 20px;
+    font-size: 21px;
+    font-style: normal;
+}
+
+#StaticDiv{
+    position: absolute;
+    right: 70px;
+}
+
+#SumUp{
+    position: absolute;
+    right: 0px;
+    background-color: brown;
+    margin: 5px;
+    background-color: #404040;
+}

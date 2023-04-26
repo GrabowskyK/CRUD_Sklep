@@ -6,9 +6,6 @@
 
 <h1>ListCart</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table" style="color:white;">
     <thead>
         <tr>
@@ -30,10 +27,12 @@
     <tbody>
         @{
             var iterable = 0;
+            float total = 0;
         }
 @foreach (var item in Model) {
             @if(1 == 1){
                 iterable += 1;
+                total += item.Sum;
             }
             <tr>
             <td>
@@ -46,11 +45,11 @@
                     @Html.DisplayFor(modelItem => item.Amount)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Sum)
+                @Html.DisplayFor(modelItem => item.Sum) $
             </td>
             <td>
                     <a asp-action="Edit" asp-route-id="@item.Id" asp-controller="ShoppingCart" asp-for="id">
-                        <button type="submit" name="id" value="@item.Id" class="buttonInListCart">Edit</button>
+                        <button name="id" value="@item.Id" class="buttonInListCart">Edit</button>
                     </a>
                     <form method="post" asp-action="Delete" asp-controller="ShoppingCart" asp-for="id">
                         <button type="submit" name="id" value="@item.Id" class="buttonInListCart">Delete</button>
@@ -61,3 +60,16 @@
 }
     </tbody>
 </table>
+<div id="SumUp">
+    @{
+        total = total * 100;
+        total = (float)Math.Floor(total);
+        total /= 100;
+    }
+    <h4>Total: @total $</h4><br />
+    <a asp-action="RemoveAll" asp-controller="ShoppingCart">
+        <button style="background-color:#2E0B36;margin: 5px; width: 210px;">Clear cart</button><br /><br />
+        
+    </a>
+    <button style="background-color:#2E0B36;margin: 5px; width: 210px;">Payment</button><br />
+    </div>

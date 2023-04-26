@@ -1,0 +1,46 @@
+﻿@model CRUD_Sklep.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    
+    <dl class="row">
+        <div style="width:30%; float: left;">
+            <img src="https://www.euro-wino.pl/images/-------------------=przezroczyste%201.png" style="width: 140px; height: 200px;"/>
+        </div>
+        <div style="width:69%; float:left;">
+            <table style="border:none; font-size: 16px;">
+                <tr>
+                    <th> @Html.DisplayNameFor(model => model.Name) </th>
+                    <th> @Html.DisplayFor(model => model.Name) </th>
+                </tr>
+                <tr>
+                    <th> @Html.DisplayNameFor(model => model.Description) </th>
+                    <th> @Html.DisplayFor(model => model.Description) </th>
+                </tr>
+                <tr>
+                    <th> @Html.DisplayNameFor(model => model.Category) </th>
+                    <th> @Html.DisplayFor(model => model.Category) </th>
+                </tr>
+                <tr>
+                    <th> @Html.DisplayNameFor(model => model.Amount) </th>
+                    <th> @Html.DisplayFor(model => model.Amount) </th>
+                </tr>
+                <tr>
+                    <th> @Html.DisplayNameFor(model => model.Price) </th>
+                    <th> @Html.DisplayFor(model => model.Price) $</th>
+                </tr>
+
+            </table>
+        </div>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

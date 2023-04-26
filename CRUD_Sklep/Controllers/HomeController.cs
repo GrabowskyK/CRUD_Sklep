@@ -57,6 +57,12 @@ namespace CRUD_Sklep.Controllers
             return RedirectToAction("ListProducts");
         }
 
+        public IActionResult Details(int id)
+        {
+            var product = _productService.GetAllProducts().Where(p => p.Id == id).FirstOrDefault();
+            return View(product);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
