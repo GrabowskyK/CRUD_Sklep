@@ -1,5 +1,7 @@
 ﻿@model IEnumerable<CRUD_Sklep.Models.Product>
-
+@{
+    bool y = false;
+}
 @{
     ViewData["Title"] = "ListProducts";
 }
@@ -49,7 +51,17 @@
                 @Html.DisplayFor(modelItem => item.Category)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Amount)
+                    @if (item.Amount > 0)
+                    {
+                        @Html.DisplayFor(modelItem => item.Amount)
+                        y = true;
+                    }
+                    else
+                    {
+                        y = false;
+                        <p>Out of stock!</p>
+
+                    }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
@@ -60,8 +72,16 @@
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
 
                 <form asp-controller="ShoppingCart" asp-action="AddToKoszyk" method="post">
-                    <input type="number" name="amount" value="1" />
-                    <button type="submit" name="id" value="@item.Id">Dodaj</button>
+                        @if (y == false)
+                        {
+                            <input type="number" name="amount" value="1" disabled/>
+                            <button type="submit" name="id" value="@item.Id">Dodaj</button>
+                        }
+                        else
+                        {
+                            <input type="number" name="amount" value="1" />
+                        }
+                            
                 </form>
             </td>
         </tr>

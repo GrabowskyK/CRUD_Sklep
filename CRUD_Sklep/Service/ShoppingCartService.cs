@@ -72,9 +72,9 @@ namespace CRUD_Sklep.Service
         public bool UpdateAmountAfterEdit(int productId, int amount)
         {
             var item = _databaseContext.ShopingCarts.FirstOrDefault(sc => sc.ProductId == productId);
-            if (amount <= item.Amount && amount > 0)
+            var sub = _databaseContext.Products.FirstOrDefault(p => p.Id == productId);
+            if (amount <= sub.Amount && amount > 0)
             {
-                var sub = _databaseContext.Products.FirstOrDefault(p => p.Id == productId);
                 sub.Amount += item.Amount - amount;
 
                 item.Amount = amount;
